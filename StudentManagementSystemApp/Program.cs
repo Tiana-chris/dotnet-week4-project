@@ -24,7 +24,6 @@ class StudentManagementSystem
             Console.WriteLine("Enter your choice: ");
 
             int choice = int.Parse(Console.ReadLine());
-            
             switch (choice)
             {
                 case 1: AddStudent();
@@ -58,7 +57,7 @@ class StudentManagementSystem
             }
         }
     }
-   
+
     static void AddStudent()
     {
         Console.Write("Enter Student Name: ");
@@ -157,5 +156,25 @@ class StudentManagementSystem
         Console.WriteLine("Student not found.");
     }
 
-    
+    static void DisplayStats()
+    {
+        double highest = grades[0];
+        double lowest = grades[0];
+        int pass = 0;
+        int fail = 0;
+
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (grades[i] > highest) highest = grades[i];
+            if (grades[i] < lowest) lowest = grades[i];
+            if (grades[i] >= 60) pass++;
+            else
+            fail++;
+        }
+
+        Console.WriteLine($"Highest Grade: {highest}");
+        Console.WriteLine($"Lowest Grade: {lowest}");
+        Console.WriteLine($"Passing Student: {pass}");
+        Console.WriteLine($"Failing Student: {fail}");
+    }
 }
