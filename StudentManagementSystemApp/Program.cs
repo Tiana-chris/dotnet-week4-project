@@ -87,5 +87,75 @@ class StudentManagementSystem
         }
     }
 
+    static void CalculateAverage()
+    {
+        double sum = 0;
+        for (int i = 0; i < studentCount; i++)
+        {
+            sum += grades[i];
+        }
+
+        double average = sum / studentCount;
+        Console.WriteLine($"Average Grade: {average:F2}");
+    }
+
+    static void FindStudent()
+    {
+        Console.WriteLine("Enter Student ID: ");
+        int id = int.Parse(Console.ReadLine());
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (ids[i] == id)
+            {
+                Console.WriteLine($"Name: {names[i]}  Grade: {grades[i]}");
+                return;
+            }
+        }
+
+        Console.WriteLine("Student not found");
+    }
+
+    static void UpdateGrade()
+    {
+        Console.Write("Enter Student ID: ");
+        int id = int.Parse(Console.ReadLine());
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (ids[i] == id)
+            {
+                Console.Write("Enter new grade: ");
+                grades[i] = double.Parse(Console.ReadLine());
+                Console.WriteLine("Grade update.");
+                return;
+            }
+        }
+
+        Console.WriteLine("Student not found.");
+    }
+
+    static void DeleteStudent()
+    {
+        Console.Write("Enter Student ID: ");
+        int id = int.Parse(Console.ReadLine());
+        for (int i = 0; i < studentCount; i++)
+        {
+            if (ids[i] == id)
+            {
+                for (int j = i; j < studentCount - 1; j++)
+                {
+                    names[j] = names[j + 1];
+                    ids[j] = ids[j +1];
+                }
+
+                studentCount--;
+
+                Console.WriteLine("Student deleted.");
+                return;
+            }
+        }
+
+        Console.WriteLine("Student not found.");
+    }
+
     
 }
