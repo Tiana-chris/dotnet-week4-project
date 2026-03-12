@@ -59,5 +59,33 @@ class StudentManagementSystem
         }
     }
    
+    static void AddStudent()
+    {
+        Console.Write("Enter Student Name: ");
+        names[studentCount] = Console.ReadLine();
+
+        Console.Write("Enter Student ID: ");
+        ids[studentCount] = int.Parse(Console.ReadLine());
+
+        Console.Write("Enter Grade: ");
+        grades[studentCount] = double.Parse(Console.ReadLine());
+
+        studentCount++;
+
+        Console.WriteLine("Student added successfully.");
+
+    }
+
+    static void ViewStudents()
+    {
+        Console.WriteLine("\nID\tName\tGrade\tStatus");
+
+        for (int i = 0; i < studentCount; i++)
+        {
+            string status = grades[i] >= 60 ? "Pass" : "Fail";
+            Console.WriteLine($"{ids[i]}\t{names[i]}\t{grades[i]}\t{status}");
+        }
+    }
+
     
 }
